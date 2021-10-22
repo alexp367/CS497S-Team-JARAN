@@ -1,18 +1,23 @@
 export const MenuItems = [
 
     {
+        title: 'Home',
+        url: '/',
+        cName: 'nav-links'
+    },
+    {
         title: 'Find Matches!',
-        url: '#',
+        url: '/FindMatches',
         cName: 'nav-links'
     },    
     {
         title: 'View Matches',
-        url: '#',
+        url: '/ViewMatches',
         cName: 'nav-links'
     },
     {
         title: 'Profile Preview',
-        url: '#',
+        url: '/ProfilePreview',
         cName: 'nav-links'
     },
     {
