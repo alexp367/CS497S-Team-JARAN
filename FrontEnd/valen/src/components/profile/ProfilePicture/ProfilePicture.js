@@ -25,8 +25,9 @@ class ProfilePicture extends Component {
                 <div>
                     <div>
                         <img src={this.state.image} />
-                        <h1>Upload Image</h1>
-                        <input type="file" name="pfp" onChange={this.onImageChange} />
+                        <label for="pfp" class="profile-label">Upload Profile Picture</label>
+
+                        <input type="file" class="center-block" name="pfp" onLoad="./EmptyPic.png" onChange={this.onImageChange} />
                     </div>
                 </div>
             </div>
