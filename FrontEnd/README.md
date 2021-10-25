@@ -1,7 +1,7 @@
-## Profile Page Microservice
+## Front End/Profile Microservice
 
 Developer: Alex Hickey \
-Service Overview: Allows users to create and update their dating profile. This includes uploading a profile picture, answering information about themselves and what they are looking for in others, and adding free-form information to their profile. \
+Service Overview: Primary Front End work for the application thus far. Allows users to create and update their dating profile. This includes uploading a profile picture, answering information about themselves and what they are looking for in others, and adding free-form information to their profile. \
 Purpose: The cornerstone of any dating website - your profile! Allows users to customize the application to make it their own, and also serves as a beginning point and homepage for the website. This page is where users are sent to after they login/authenticate, \
 Future Improvements: Allow users to upload multiple photos of themself in slideshow-format, allow users to include more information about them. More prompts for them to choose from to answer, more characteristics about them/they like in others, etc. \
 API Endpoints:
