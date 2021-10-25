@@ -7,7 +7,7 @@ This service allows users to register with a username and password and then logi
 
 API Endpoints: 
 
-/ 
+/ \
 Uses HTTP GET to redirect the user to the login page. \
 Redirects the user to the login html page. \
 HTTP status code 200: succesfully redirected to login page 
