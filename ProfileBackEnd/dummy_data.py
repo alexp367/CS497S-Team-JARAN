@@ -10923,6 +10923,9 @@ class DummyDataModel:
         # print("Favorite Activity: " + favorite_activity)
         # print("Favorite Food: " + favorite_food)
         # print("Top Places: " + top_places)
+
+
+        
         random_profile = {}
         for key in self.dummy_data:
             if type(self.dummy_data[key]) is list:
