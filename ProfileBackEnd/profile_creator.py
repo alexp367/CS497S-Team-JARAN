@@ -1,12 +1,12 @@
 
 from dummy_data import DummyDataModel
+import pprint
 
 
 class ProfileCreator(DummyDataModel):
-    def run(self):
-        for i in range(1, 10):
-            self.random_profile()
-        return
+    def get_random_profile(self):
+        return self.random_profile()
+
 
 Tester = ProfileCreator()
-Tester.run()
+Tester.get_random_profiles()
