@@ -14,6 +14,7 @@ class AboutMe extends Component {
 
         fetch("./save", {
             method: "POST",
+            cache: "no-cache",
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
