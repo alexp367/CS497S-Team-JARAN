@@ -10,9 +10,11 @@ let db, collection;
 
 app.post("/save", (req, res) => {
     //Needed because it is for some reason sending 2 post requests upon hitting 'submit', and one of them has all null values
+    //Current solution just discards/ignores the duplicate request
     //TODO: Figure out why it sends 2 post requests and fix it
     if(req.body.myGender == null) {
-        res.send("Error with save POST request");
+        //res.send("Error with save POST request");
+        res.send("Profile has been successfully saved");
     }
     else {
         collection = db.collection("Profiles");
@@ -37,11 +39,8 @@ app.post("/save", (req, res) => {
     
 });
 
-
 client.connect(err => {
-    if (err) {
-        console.error(err);
-    } else {
+    if(!err) {
         const port = process.env.PORT || 3000;
         app.listen(port);
         db = client.db("ProfilesDB");
