@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docker_build": "docker build -t api_gateway -f Dockerfile .",
-    "docker_run": "docker run -d --rm --name api_gateway -p 80:80 -v \"$(pwd)/config"
+    "docker_run": "docker run -d --rm --name api_gateway -p 5000:5000 api_gateway_1",
+    "docker_run_dev": "./bin/run_dev.sh"
   },
   "keywords": [
     "nginx",
