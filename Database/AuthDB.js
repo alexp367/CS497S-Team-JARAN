@@ -35,7 +35,7 @@ app.post("/events", async (req, res) => {
 
 client.connect(err => {
     if(!err) {
-        const port = process.env.PORT || 3000;
+        const port = process.env.PORT || 4000;
         app.listen(port);
         db = client.db("AuthDB");
     }
