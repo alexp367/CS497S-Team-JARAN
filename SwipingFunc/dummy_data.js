@@ -1,9 +1,21 @@
 
-import random
+class Profile {
+    constructor(first_name, last_name, profile_picture_link, location, age, gender, gender_preference, sexual_orientation, job, school) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.profile_picture_link = profile_picture_link;
+        this.location = location;
+        this.age = age;
+        this.gender = gender;
+        this.gender_preference = gender_preference;
+        this.sexual_orientation = sexual_orientation;
+        this.job = job;
+        this.school = school;
+    }
 
-class DummyDataModel:
-    dummy_data = {
-        "first_name": [
+    get_random_profile(){
+        const first_names = 
+        [
             "Aaran",
             "Aaren",
             "Aarez",
@@ -2742,8 +2754,10 @@ class DummyDataModel:
             "Zubair",
             "Zubayr",
             "Zuriel",
-        ],
-        "last_name": [
+        ];
+        
+        const last_names = 
+        [
             "Abbott",
             "Acevedo",
             "Acosta",
@@ -3744,8 +3758,10 @@ class DummyDataModel:
             "Young",
             "Zamora",
             "Zimmerman",
-        ],
-        "age": [
+        ];
+
+        const age = 
+        [
             16,
             17,
             18,
@@ -3785,8 +3801,10 @@ class DummyDataModel:
             70,
             80,
             90,
-        ],
-        "location": [
+        ];
+
+        const location = 
+        [
             "Abbeville",
             "Abbotsford",
             "Aberdeen",
@@ -10526,23 +10544,17 @@ class DummyDataModel:
             "Zionville",
             "Zolfo Springs",
             "Zuni",
-        ],
-        "gender": ["Male", "Female", "Other"],
-        "sexual_orientation": ["Straight", "Gay", "Bi", "Pansexual", "Asexual", "Other"],
-        "show_me_gender": ["Men", "Women", "Both"],
-        "bio": [
-            "I love fishing",
-            "Take me out to dinner",
-            "Tacos are my favorite food",
-            "James Bond is my favorite movie",
-            "I love sports",
-            "Patriots are my life",
-            "Lebron James is my idol",
-            "I'm nasty at trivia",
-            "Take me to get fast food"
-        ],
-        "school": ["UMass Amherst", "Amherst College", "Smith College", "Mount Holyoke College", "Hampshire College"],
-        "job": [
+        ];
+
+        const gender = ["Male", "Female", "Other"];
+
+        const sexual_orientation = ["Straight", "Gay", "Bi", "Pansexual", "Asexual", "Other"];
+
+        const school = ["UMass Amherst", "Amherst College", "Smith College", "Mount Holyoke College", "Hampshire College"];
+
+        const gender_preference = ["Men", "Women", "Both"];
+
+        const job = [
             "Academic librarian",
             "Accountant",
             "Accounting technician",
@@ -10890,51 +10902,24 @@ class DummyDataModel:
             "Welfare rights adviser",
             "Writer",
             "Youth worker"
-        ],
-        "profile_questions": {
-            "interests": ["Basketball", "Soccer"],
-            "favorite_food": ["Ice Cream", "Tacos"],
-            "top_places": ["Hawaii", "LA", "Texas", "Australia", "Botswana", "Kenya", "Rhode Island", "Maryland"],
-        },
+        ];
+
+        return {FirstName: first_names[Math.floor(Math.random()*first_names.length)],
+        LastName:last_names[Math.floor(Math.random()*last_names.length)],
+        Age: age[Math.floor(Math.random()*age.length)],
+        Gender: gender[Math.floor(Math.random()*gender.length)],
+        Preference: gender_preference[Math.floor(Math.random()*gender_preference.length)],
+        Location: location[Math.floor(Math.random()*location.length)],
+        School: school[Math.floor(Math.random()*school.length)],
+        Orientation: sexual_orientation[Math.floor(Math.random()*sexual_orientation.length)],
+        Job: job[Math.floor(Math.random()*job.length)]
+        }
     }
 
-    def random_profile(self):
-        # first_name = random.choice(self.dummy_data["first_name"])
-        # last_name = random.choice(self.dummy_data["last_name"])
-        # age = random.choice(self.dummy_data["age"])
-        # location = random.choice(self.dummy_data["location"])
-        # gender = random.choice(self.dummy_data["gender"])
-        # sexual_orientation = random.choice(self.dummy_data["sexual_orientation"])
-        # show_me_gender = random.choice(self.dummy_data["show_me_gender"])
-        # about_me = random.choice(self.dummy_data["about_me"])
-        # favorite_color = random.choice(self.dummy_data["profile_questions"]["favorite_color"])
-        # favorite_activity = random.choice(self.dummy_data["profile_questions"]["favorite_activity"])
-        # favorite_food = random.choice(self.dummy_data["profile_questions"]["favorite_food"])
-        # top_places = random.choice(self.dummy_data["profile_questions"]["top_places"])
-        # print("First Name: " + first_name)
-        # print("Last Name: " + last_name)
-        # print("Age: " + str(age))
-        # print("Location: " + location)
-        # print("Gender: " + gender)
-        # print("Sexual Orientation: " + sexual_orientation)
-        # print("Show Me: " + show_me_gender)
-        # print("About Me: " + about_me)
-        # print("Favorite Color: " + favorite_color)
-        # print("Favorite Activity: " + favorite_activity)
-        # print("Favorite Food: " + favorite_food)
-        # print("Top Places: " + top_places)
+}
 
+module.exports.Profile = Profile;   
+//first_name, last_names, age, gender, location, gender_preference, school, sexual_orientation, job
+// let RandomPerson = new Profile();
 
-        
-        random_profile = {}
-        for key in self.dummy_data:
-            if type(self.dummy_data[key]) is list:
-                random_choice = random.choice(self.dummy_data[key])
-                random_profile[key] = random_choice
-            elif type(self.dummy_data[key]) is dict:
-                random_profile[key] = {}
-                for inner_key in self.dummy_data[key]:
-                    inner_random_choice = random.choice(self.dummy_data[key][inner_key])
-                    random_profile[key][inner_key] = inner_random_choice
-      
-        return random_profile
+// console.log(RandomPerson.get_random_profile());
