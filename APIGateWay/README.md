@@ -19,7 +19,7 @@ Install docker
 
 2.) `docker build -t nginx -f ./Dockerfile .`
 
-3.) `docker run -d -p 8080:8080 --net my_network --name nginx nginx`
+3.) `docker run -d -p 8080:80 --net my_network --name nginx nginx`
 
 ### Techologies
 

@@ -1,53 +1,61 @@
 services:
-  auth:
-    restart: unless-stopped
-    build:
-      context: ./Authentication
-    ports:
-      - "5000:5000"
-    environment:
-      - MESSAGE="Buildig Authentication"
+  # auth:
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./Authentication
+  #   ports:
+  #     - "5000:5000"
+  #   environment:
+  #     - MESSAGE="Building Authentication"
 
-  daterecommender:
-    restart: unless-stopped
-    build:
-      context: ./DateRecommender
-    ports:
-      - "5001:5000"
-    environment:
-      - MESSAGE="Buildig DateRecommender"
+  # daterecommender:
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./DateRecommender
+  #   ports:
+  #     - "5001:5000"
+  #   environment:
+  #     - MESSAGE="Building DateRecommender"
 
-  profilebackend:
-    restart: unless-stopped
-    build:
-      context: ./ProfileBackend
-    ports:
-      - "5002:5000"
-    environment:
-      - MESSAGE="Buildig ProfileBackend"
+  # profilebackend:
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./ProfileBackend
+  #   ports:
+  #     - "5002:5000"
+  #   environment:
+  #     - MESSAGE="Building ProfileBackend"
 
   textchat:
+    image: node:alpine
     restart: unless-stopped
     build:
       context: ./TextChat
     ports:
       - "5003:5000"
     environment:
-      - MESSAGE="Buildig TextChat"
+      - MESSAGE="Building TextChat"
 
-  swipe:
-    restart: unless-stopped
-    build:
-      context: ./Swiping
-    ports:
-      - "5004:5000"
-    environment:
-      - MESSAGE="Buildig Authentication"
+  # swipe:
+  #   restart: unless-stopped
+  #   build:
+  #     context: ./Swiping
+  #   ports:
+  #     - "5004:5000"
+  #   environment:
+  #     - MESSAGE="Building Authentication"
 
   nginx:
+    image: nginx:alpine
     restart: always
     build:
-      context: 
+      context: ./APIGateWay
     ports:
-      - "8080:8080"
-          
+      - "8080:80"
+    depends_on:
+      # - auth
+      # - daterecommender
+      # - profilebackend
+      - textchat
+      # - swipe
+      

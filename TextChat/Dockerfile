@@ -1,5 +1,5 @@
 # pull the Node Docker image
-FROM node
+FROM node:alpine
 
 # Create the directory inside the container for the app
 WORKDIR /usr/src/app
