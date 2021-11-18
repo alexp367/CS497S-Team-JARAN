@@ -1,8 +1,9 @@
 # Swiping Functionality Microservice
 
 ## Information
-This is the Swiping Service Alpha front end and beta back end code \ 
-Developer: Ryan Loofbourrow \
+
+This is the Swiping Service Alpha front end and beta back end code. \
+Developer: Ryan Loofbourrow. \
 Purpose: Allows users to 'swipe' on other users to match with them if there is a mutual interest. \
 Software: This uses HTML, CSS, and Node JS
 

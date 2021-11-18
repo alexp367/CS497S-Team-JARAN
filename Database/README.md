@@ -1,7 +1,7 @@
 # Database Microservice
 
 ## Information
-Developer: Alex Hickey setting up MongoBD/everyone connecting their Microservices to it \
+Developer: Alex Hickey setting up MongoDB/everyone connecting their Microservices to it \
 Service Overview: Database for persisting data. \
 Each microservice that requires persistent data makes its own connection to this microservice. That way, services can proxy the Database microservice for exactly what they need.
 
