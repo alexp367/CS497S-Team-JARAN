@@ -10,7 +10,7 @@ const path = require('path')
 
 
 
-///const webSocket = new WebSocket(url, protocols);
+//const webSocket = new WebSocket(url, protocols);
 
 app.use(express.static(path.join(__dirname + '/public')))
 
@@ -25,6 +25,10 @@ io.on('connection', socket => {
 
 
 app.get('/', (req, res) => {
+    res.status(200).send('WorkingH')
+});
+
+app.get('/textchat', (req, res) => {
     res.status(200).send('Working')
 });
 
