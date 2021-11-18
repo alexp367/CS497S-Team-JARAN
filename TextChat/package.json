@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e js,html index.js"
+    "start": "node index.js",
+    "start_dev": "nodemon -e js,html index.js",
+    "docker_build": "docker build -t textchat -f ./Dockerfile .",
+    "docker_run_exposed": "docker run -d -p 5003:5000 --net my_network --name textchat textchat",
+    "docker_run_nginx": "docker run -d -p --net my_network --name textchat textchat"
   },
   "keywords": [
     "Text",
@@ -16,8 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "socket.io": "^4.3.1",
-    "ws": "^8.2.3"
+    "socket.io": "^4.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.14"

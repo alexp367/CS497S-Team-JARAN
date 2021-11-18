@@ -1,13 +1,16 @@
+// Websocket
+//import WebSocket, { WebSocketServer } from 'ws';
+
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 5000
 const io = require('socket.io')(server)
 const path = require('path')
-// Websocket
-import WebSocket, { WebSocketServer } from 'ws';
 
-webSocket = new WebSocket(url, protocols);
+
+
+///const webSocket = new WebSocket(url, protocols);
 
 app.use(express.static(path.join(__dirname + '/public')))
 
