@@ -17,18 +17,9 @@ Install docker
 
 1.) navigate into /APIGateWay/
 
-2.) `docker build -t node -f ./node/Dockerfile ./node`
+2.) `docker build -t nginx -f ./Dockerfile .`
 
-3.) `docker build -t nginx -f ./nginx/Dockerfile ./nginx`
-
-4.) docker run -d -p 8080:8080 --net my_network --name nginx nginx	
-
-### `npm start`
-
-Runs the app in the development mode with nodemon.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
+3.) docker run -d -p 8080:8080 --net my_network --name nginx nginx	
 
 ### Techologies
 
