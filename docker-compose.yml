@@ -1,0 +1,53 @@
+services:
+  auth:
+    restart: unless-stopped
+    build:
+      context: ./Authentication
+    ports:
+      - "5000:5000"
+    environment:
+      - MESSAGE="Buildig Authentication"
+
+  daterecommender:
+    restart: unless-stopped
+    build:
+      context: ./DateRecommender
+    ports:
+      - "5001:5000"
+    environment:
+      - MESSAGE="Buildig DateRecommender"
+
+  profilebackend:
+    restart: unless-stopped
+    build:
+      context: ./ProfileBackend
+    ports:
+      - "5002:5000"
+    environment:
+      - MESSAGE="Buildig ProfileBackend"
+
+  textchat:
+    restart: unless-stopped
+    build:
+      context: ./TextChat
+    ports:
+      - "5003:5000"
+    environment:
+      - MESSAGE="Buildig TextChat"
+
+  swipe:
+    restart: unless-stopped
+    build:
+      context: ./Swiping
+    ports:
+      - "5004:5000"
+    environment:
+      - MESSAGE="Buildig Authentication"
+
+  nginx:
+    restart: always
+    build:
+      context: 
+    ports:
+      - "8080:8080"
+          
