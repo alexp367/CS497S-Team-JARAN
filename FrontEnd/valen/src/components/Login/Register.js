@@ -18,26 +18,24 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <form>
-                    <h1>Register</h1>
-                    <div class = "card">
-                        <div class = "container">
-                            <label for="username"><b>Username</b></label>
-                            <input type="username" name="username" id="username" required>
-                            </input>   
+                <h1>Register</h1>
+                <div class = "card">
+                    <div class = "container">
+                        <label for="username"><b>Username</b></label>
+                        <input type="username" name="username" id="username" required>
+                        </input>   
 
-                            <label for="password"><b>Password</b></label>
-                            <input type="password" name="password" id="password" required>
-                            </input>
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" name="password" id="password" required>
+                        </input>
 
-                            <button type="submit" onClick={this.Registration}>Register</button>
+                        <button type="submit" onClick={this.Registration}>Register</button>
 
-                            <a href="login">
-                                <p>Already registered?</p>
-                            </a>
-                        </div>
+                        <a href="login">
+                            <p>Already registered?</p>
+                        </a>
                     </div>
-                </form>
+                </div>
             </div>
         );
     }
