@@ -24,13 +24,10 @@ io.on('connection', socket => {
 })
 
 
-app.get('/', (req, res) => {
-    res.status(200).send('WorkingH')
-});
-
-app.get('/textchat', (req, res) => {
-    res.status(200).send('Working')
-});
+// app.get('/', (req, res) => {
+//     //res.sendFile(__dirname + '/public/index.html')
+//     //res.status(200).send('Working')
+// });
 
 server.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
