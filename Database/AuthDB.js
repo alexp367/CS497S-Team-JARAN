@@ -18,16 +18,34 @@ app.post("/events", async (req, res) => {
             username: data.username,
             password: data.password
         };
-        collection.insertOne(account);
+        const val = collection.find_one({ "username": data.username });
+        if(val){
+            collection.insertOne(account);
+            console.log("Succesfully registered your account");
+
+            await axios.post("http://localhost:5000/events", {
+                type: "returnToLogin",
+                data: val,
+            });
+        }
+        else{
+            console.log("Username already in use");
+        }
     }
 
     if (type === "LoginAttempt") {
         const val = collection.find_one({ "username": data.username });
-
-        await axios.post("http://localhost:4000/events", {
-            type: "Login",
-            data: val,
-        });
+        if(val){
+            console.log("Succesfully logged into your account");
+            await axios.post("http://localhost:5000/events", {
+                type: "Login",
+                data: val,
+            });
+        }
+        else{
+            console.log("Username not found");
+        }
+    
     }
 
     res.send({});

@@ -1,47 +1,24 @@
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
-const port = process.env.PORT || 3000
-const path = require('path');
+const port = process.env.PORT || 4001
 app.use(express.json());
-app.use(express.urlencoded({'extended' : true}));
+const axios = require('axios');
+const path = require('path');
 
-var creds = {};
-
-app.get('/', (req, res) => {
-    res.status(200).sendFile(path.join(__dirname, '/public/login.html'));
-});
-
-app.post('/register', (req, res) => {
+app.post('/events', async (req, res) => {
     const username = req.body['username'];
     const password = req.body['password'];  
-    if(creds.hasOwnProperty(username)){
-        res.status(401).sendFile(path.join(__dirname + "/public/register.html"));
-    }
-    else{
-        creds[username] = password;
-        res.status(201).sendFile(path.join(__dirname + "/public/login.html"));
-        
-    }
-});
+    const { type, data } = req.body;
 
-app.post('/login', (req, res) => {
-    const username = req.body['username'];
-    const password = req.body['password'];  
-    if(creds[username] === password){
-        res.status(200).sendFile(path.join(__dirname + "/public/home.html"));//Empty page to ensure login works
+    if(type == 'returnToLogin'){
+        res.redirect('/FrontEnd/valen/src/components/Login/Login');
     }
-    else{
-        res.status(401).sendFile(path.join(__dirname + "/public/login.html"));
+
+    if(type == 'Login'){
+        res.redirect('/FrontEnd/valen/src/components/Profile/Profile');
     }
-});
 
-app.get("/register", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname + "/public/register.html"));
-});
-
-app.get("/login", (req, res) => {
-    res.status(200).sendFile(path.join(__dirname + "/public/login.html"));
 });
 
 server.listen(port, () => {
