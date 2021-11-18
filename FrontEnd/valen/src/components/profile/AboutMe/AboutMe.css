@@ -1,0 +1,8 @@
+#myAge, #desiredAge {
+    width: 3em;
+}
+
+.description {
+    position: absolute;
+    right: 10px;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "textchat",
+  "version": "1.0.0",
+  "description": "Text Chat Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e js,html index.js"
+  },
+  "keywords": [
+    "Text",
+    "Chat",
+    "Service"
+  ],
+  "author": "Nam Phan",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}

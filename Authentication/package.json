@@ -1,0 +1,23 @@
+{
+  "name": "authentication",
+  "version": "1.0.0",
+  "description": "Login and Registration",
+  "main": "authentication.js",
+  "scripts": {
+    "start": "nodemon -e authentication.js"
+  },
+  "keywords": [
+    "Register",
+    "Login",
+    "Authentication",
+    "Service"
+  ],
+  "author": "Alex Preston",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
