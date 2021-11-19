@@ -1,20 +1,34 @@
 const express = require("express");
 const axios = require("axios");
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
-app.post("/events", (req, res) => {
-  const event = req.body;
+app.post("/events", async (req, res) => {
+  const event = req.body.event;
+  let db_res;
 
-  axios.post("http://localhost:4000/events", event).catch((err) => {
-    console.log(err.message);
-  });
-  axios.post("http://localhost:4001/events", event).catch((err) => {
-    console.log(err.message);
-  });
+  switch(event){
+    case "saveProfile":
+      db_res = await axios.post("http://localhost:8000/save", req.body).catch((err) => {
+        console.log(err.message);
+      });
+      break;
+    case "getProfile":
+      db_res = await axios.post("http://localhost:8000/get", req.body).catch((err) => {
+        console.log(err.message);
+      });
+      break;
+    case "getCommonInterests":
+      db_res = await axios.post("http://localhost:3002/getCommonInterests", req.body).catch((err) => {
+        console.log(err.message);
+      });
+      break;
+  }
 
-  res.send({ status: "OK" });
+  res.send(db_res.data);
 });
 
 app.listen(5000, () => {
