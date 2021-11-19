@@ -22,11 +22,11 @@ class Register extends Component {
                 <div class = "card">
                     <div class = "container">
                         <label for="username"><b>Username</b></label>
-                        <input type="username" name="username" id="username" required>
+                        <input type="username" name="username" id="username" class = "ainput" required>
                         </input>   
 
                         <label for="password"><b>Password</b></label>
-                        <input type="password" name="password" id="password" required>
+                        <input type="password" name="password" id="password" class = "ainput" required>
                         </input>
 
                         <button type="submit" onClick={this.Registration}>Register</button>
