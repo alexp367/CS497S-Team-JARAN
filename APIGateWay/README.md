@@ -29,5 +29,8 @@ nginx
 
 Currently routes to:
 
+"/"
+"/textchat": http://localhost:5003
+
 
 
