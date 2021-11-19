@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
 import './AboutMe.css';
+const axios = require("axios");
+
+const interests = [];
 
 class AboutMe extends Component {
-    saveProfile() {
+    async saveProfile() {
         const profile = {"myGender": document.getElementById("myGender").value,
                      "preferredGender": document.getElementById("preferredGender").value,
                      "myAge": document.getElementById("myAge").value,
                      "preferredAge": document.getElementById("preferredAge").value,
-                     "activities": document.getElementById("activities").value,
-                     "movies": document.getElementById("movies").value,
+                     "interests": interests,
                      "description": document.getElementById("description").value,
                     };
-
-        fetch("./save", {
-            method: "POST",
-            cache: "no-cache",
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-            },
-            body: JSON.stringify(profile),
+        const eb_res = await axios.post("http://localhost:5000/events", {
+            "event": "saveProfile",
+            "profile": profile
+        }).catch((err) => {
+            console.log(err.message);
         });
+    }
+
+    addInterest() {
+        interests.push(document.getElementById("interests").value);
     }
 
     render() {
@@ -49,17 +52,20 @@ class AboutMe extends Component {
                             <label for="preferredAge"> looking for someone within </label>
                             <input type="number" id="preferredAge" name="preferredAge" min="0"></input> years of my age
                             <br></br>
-                            Some activities I like are <input type="text" id="activities" name="activities" size="60"></input>
-                            <br></br>
-                            Some movies/tv shows I like are <input type="text" id="movies" name="movies" size="60"></input>
+                            <label for="interests">Interests </label>
+                            <select name="interests" id="interests" onChange={this.addInterest}>
+                                <option value="Basketball">Basketball</option>
+                                <option value="Football">Football</option>
+                                <option value="Baseball">Baseball</option>
+                                <option value="Hockey">Hockey</option>
+                                <option value="Soccer">Soccer</option>
+                            </select>
                             <br></br>
                             <br></br> 
 
 
                             <br></br><br></br>
-                            <form action="save" method="post">
-                                <input type="submit" value="Save" onClick={this.saveProfile}></input>
-                            </form>
+                            <input type="submit" value="Save" onClick={this.saveProfile}></input>
                         </form>
                     </div>
                 </div>

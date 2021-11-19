@@ -9,40 +9,25 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 let db, collection;
 
 app.post("/save", (req, res) => {
-    //Needed because it is for some reason sending 2 post requests upon hitting 'submit', and one of them has all null values
-    //Current solution just discards/ignores the duplicate request
-    //TODO: Figure out why it sends 2 post requests and fix it
-    if(req.body.myGender == null) {
-        //res.send("Error with save POST request");
-        res.send("Profile has been successfully saved");
-    }
-    else {
-        collection = db.collection("Profiles");
-        const profile = {
-            myGender: req.body.myGender,
-            preferredGender: req.body.preferredGender,
-            myAge: req.body.myAge,
-            preferredAge: req.body.preferredAge,
-            activities: req.body.activities,
-            movies: req.body.movies,
-            description: req.body.description
-        };
+    db.collection("Profiles").insertOne(req.body.profile, (err) => {
+        if(err) {
+            res.send("Error saving profile");
+        }
+    });
+    res.send("Profile has been successfully saved");
+});
 
-        collection.insertOne(profile, (err) => {
-            if(err) {
-                res.send("Error with save POST request");
-            } else {
-                res.send("Profile has been successfully saved");
-            }
-        });
-    }
-    
+app.post("/get", async (req, res) => {
+    const profile = await db.collection("Profiles").find({ "userId": parseInt(req.body.profileId) }).toArray();
+    res.send(profile);
 });
 
 client.connect(err => {
     if(!err) {
-        const port = process.env.PORT || 3000;
-        app.listen(port);
+        const port = process.env.PORT || 8000;
+        app.listen(port, () => {
+            console.log("Listening on " + port);
+        });
         db = client.db("ProfilesDB");
     }
 });
