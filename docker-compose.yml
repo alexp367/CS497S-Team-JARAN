@@ -1,3 +1,4 @@
+version: "3.9"
 services:
   # auth:
   #   restart: unless-stopped
@@ -27,14 +28,20 @@ services:
   #     - MESSAGE="Building ProfileBackend"
 
   textchat:
-    image: node:alpine
+    image: textchatimage
+    container_name: textchat
     restart: unless-stopped
     build:
       context: ./TextChat
+    # expose:
+    #    - "5000"
     ports:
       - "5003:5000"
     environment:
       - MESSAGE="Building TextChat"
+    # networks:
+    #   app_net:
+    #     ipv4_address: 172.16.238.10
 
   # swipe:
   #   restart: unless-stopped
@@ -46,12 +53,15 @@ services:
   #     - MESSAGE="Building Authentication"
 
   nginx:
-    image: nginx:alpine
+    image: nginximage
+    container_name: nginx
     restart: always
     build:
       context: ./APIGateWay
     ports:
       - "8080:80"
+    links:
+      - textchat
     depends_on:
       # - auth
       # - daterecommender
