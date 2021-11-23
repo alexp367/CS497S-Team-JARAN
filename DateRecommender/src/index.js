@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3002
 
 app.use(express.json());
 
-app.post('/recommend', (req, res) => {
-    const interest_1 = req.body["interest_1"].sort();
-    const interest_2 = req.body["interest_2"].sort();
+app.post('/getCommonInterests', (req, res) => {
+    const interest_1 = req.body.interests1.sort();
+    const interest_2 = req.body.interests2.sort();
     const common_interest = [];
     let i = 0;
     let j = 0;
@@ -28,5 +28,5 @@ app.post('/recommend', (req, res) => {
 });
 
 server.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log("Listening on " + port);
 });

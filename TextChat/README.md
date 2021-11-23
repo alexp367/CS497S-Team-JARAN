@@ -1,3 +1,4 @@
+Developer: Nam Phan
 # This is the TextChat Service
 
 ## Available Scripts
