@@ -12,7 +12,8 @@ const path = require('path')
 
 //const webSocket = new WebSocket(url, protocols);
 
-app.use(express.static(path.join(__dirname + '/public')))
+//app.use(express.static(path.join(__dirname + '/public')))
+app.use(express.static('public'))
 
 io.on('connection', socket => {
     //console.log('Some client connected')
@@ -24,10 +25,9 @@ io.on('connection', socket => {
 })
 
 
-// app.get('/', (req, res) => {
-//     //res.sendFile(__dirname + '/public/index.html')
-//     //res.status(200).send('Working')
-// });
+app.get('/', (req, res) => {
+    //res.status(200).send('Working')
+});
 
 server.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
