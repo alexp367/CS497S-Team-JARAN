@@ -2,28 +2,37 @@ version: "3.9"
 services:
   # auth:
   #   restart: unless-stopped
+  #   image: authimage
+  #   container_name: auth
+  #   restart: unless-stopped
+  #   expose:
+  #     - "5000"
   #   build:
   #     context: ./Authentication
-  #   ports:
-  #     - "5000:5000"
   #   environment:
   #     - MESSAGE="Building Authentication"
 
   # daterecommender:
   #   restart: unless-stopped
+  #   image: daterecommenderimage
+  #   container_name: daterecommender
+  #   restart: unless-stopped
+  #   expose:
+  #     - "5000"
   #   build:
   #     context: ./DateRecommender
-  #   ports:
-  #     - "5001:5000"
   #   environment:
   #     - MESSAGE="Building DateRecommender"
 
   # profilebackend:
   #   restart: unless-stopped
+  #   image: profilebackendimage
+  #   container_name: profilebackend
+  #   restart: unless-stopped
+  #   expose:
+  #     - "5000"
   #   build:
   #     context: ./ProfileBackend
-  #   ports:
-  #     - "5002:5000"
   #   environment:
   #     - MESSAGE="Building ProfileBackend"
 
@@ -43,12 +52,26 @@ services:
 
   # swipe:
   #   restart: unless-stopped
+  #   image: swipeimage
+  #   container_name: swipe
+  #   restart: unless-stopped
+  #   expose:
+  #     - "5000"
   #   build:
   #     context: ./Swiping
-  #   ports:
-  #     - "5004:5000"
   #   environment:
   #     - MESSAGE="Building Authentication"
+
+  # frontend:
+  #   image: frontendimage
+  #   container_name: frontend
+  #   restart: unless-stopped
+  #   expose:
+  #     - "3000"
+  #   build:
+  #     context: ./FrontEnd
+  #   environment:
+  #     - MESSAGE="Building the FrontEnd"
 
   nginx:
     image: nginximage
@@ -63,5 +86,7 @@ services:
       # - daterecommender
       # - profilebackend
       - textchat
+      # - frontend
       # - swipe
+
       
