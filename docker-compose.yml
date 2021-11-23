@@ -31,12 +31,10 @@ services:
     image: textchatimage
     container_name: textchat
     restart: unless-stopped
+    expose:
+      - "5000"
     build:
       context: ./TextChat
-    # expose:
-    #    - "5000"
-    ports:
-      - "5003:5000"
     environment:
       - MESSAGE="Building TextChat"
     # networks:
@@ -60,8 +58,6 @@ services:
       context: ./APIGateWay
     ports:
       - "8080:80"
-    links:
-      - textchat
     depends_on:
       # - auth
       # - daterecommender
