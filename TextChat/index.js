@@ -15,16 +15,13 @@ app.use(express.static(path.join(__dirname + '/public')))
 //app.use(express.static('public'))
 app.use(express.static(path.join(__dirname, '/')))
 
-
 io.on('connection', socket => {
     //console.log('Some client connected')
-
     socket.on('chat', message => {
         //console.log('From client: ', message)
         io.emit('chat', message)
       })
 })
-
 
 app.get('/', (req, res) => {
     //res.status(200).send('Working')
