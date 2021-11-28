@@ -2,28 +2,28 @@ version: "3.9"
 services:
   # auth:
   #   restart: unless-stopped
-  #   build:
-  #     context: ./Authentication
   #   expose:
   #     - "5000"
+  #   build:
+  #     context: ./Authentication
   #   environment:
   #     - MESSAGE="Building Authentication"
 
   # daterecommender:
   #   restart: unless-stopped
-  #   build:
-  #     context: ./DateRecommender
   #   expose:
   #     - "5000"
+  #   build:
+  #     context: ./DateRecommender
   #   environment:
   #     - MESSAGE="Building DateRecommender"
 
   # profilebackend:
   #   restart: unless-stopped
-  #   build:
-  #     context: ./ProfileBackend
   #   expose:
   #     - "5000"
+  #   build:
+  #     context: ./ProfileBackend
   #   environment:
   #     - MESSAGE="Building ProfileBackend"
 
@@ -31,10 +31,10 @@ services:
     image: textchatimage
     container_name: textchat
     restart: unless-stopped
-    build:
-      context: ./TextChat
     expose:
         - "5000"
+    build:
+      context: ./TextChat
     environment:
       - MESSAGE="Building TextChat"
     # networks:
@@ -43,10 +43,10 @@ services:
 
   # swipe:
   #   restart: unless-stopped
-  #   build:
-  #     context: ./Swiping
   #   expose:
   #     - "5000"
+  #   build:
+  #     context: ./Swiping
   #   environment:
   #     - MESSAGE="Building Authentication"
 
