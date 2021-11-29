@@ -1,0 +1,18 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "Developer: Alex Hickey setting up MongoDB/everyone connecting their Microservices to it \\\r Service Overview: Database for persisting data. \\\r Each microservice that requires persistent data makes its own connection to this microservice. That way, services can proxy the Database microservice for exactly what they need.",
+  "main": "AuthDB.js",
+  "dependencies": {
+    "concurrently": "^6.4.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "concurrently \"node ProfileDB.js && node AuthDB.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
