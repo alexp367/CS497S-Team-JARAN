@@ -1,7 +1,4 @@
-var io = require('socket.io-client');
-const socket = io('http://textchat:5000', {
-  path: '/textchat'
-})
+const socket = io()
 
 const chat = document.querySelector('.chat-form')
 const Input = document.querySelector('.chat-input')

@@ -3,9 +3,7 @@
 The gateway is ran in a docker container
 More description to follow
 
-### Setup
-
-run these commands for now, will build a docker compose file later.
+### Setup without docker compose
 
 Install docker
 
@@ -13,13 +11,15 @@ Install docker
 
 `docker network create my_network`
 
-### Build the docker image
+### Build the docker image for dependency Microservies first before this gateway
 
-1.) navigate into /APIGateWay/
+1.) Containerize the other Microservices and connect them to the network you created
 
-2.) `docker build -t nginx -f ./Dockerfile .`
+2.) Navigate to /APIGateWay/
 
-3.) `docker run -d -p 8080:80 --net my_network --name nginx nginx`
+3.) `docker build -t nginx -f ./Dockerfile .`
+
+4.) `docker run -d -p 8080:80 --net my_network --name nginx nginx`
 
 ### Techologies
 
@@ -31,7 +31,4 @@ Currently routes to:
 
 "/"
 
-"/textchat": http://localhost:5003
-
-
-
+"/textchat": http://textchat:5000

@@ -1,0 +1,14 @@
+{
+  "name": "apigateway",
+  "version": "1.0.0",
+  "description": "The gateway is ran in a docker container\r More description to follow",
+  "main": "default.conf",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "socket.io": "^4.3.1"
+  }
+}
