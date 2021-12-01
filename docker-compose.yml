@@ -66,16 +66,16 @@ services:
     environment:
       - MESSAGE="Building TextChat"
 
-  # swipe:
-  #   image: swipe_image
-  #   container_name: swipe
-  #   restart: unless-stopped
-  #   build:
-  #     context: ./SwipingFunc
-  #   ports:
-  #     - "3004:3004"
-  #   environment:
-  #     - MESSAGE="Building SwipingFunc"
+  swipe:
+    image: swipe_image
+    container_name: swipe
+    restart: unless-stopped
+    build:
+      context: ./Swiping
+    ports:
+      - "3004:3004"
+    environment:
+      - MESSAGE="Building Swiping"
 
   eventbus:
     image: eventbus_image
