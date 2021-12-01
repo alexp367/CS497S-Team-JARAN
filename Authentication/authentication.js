@@ -12,11 +12,11 @@ app.post('/events', async (req, res) => {
     const { event, data } = req.body;
 
     if(event == 'returnToLogin'){
-        res.redirect('../FrontEnd/src/components/Login/Login'); 
+        //res.redirect('../FrontEnd/src/components/Login/Login'); 
     }
 
     if(event == 'Login'){
-        res.redirect('../FrontEnd/src/components/profile/Profile'); 
+        //res.redirect('../FrontEnd/src/components/profile/Profile'); 
     }
 
 });

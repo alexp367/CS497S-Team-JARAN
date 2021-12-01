@@ -27,23 +27,22 @@ app.post("/events", async (req, res) => {
       });
       break;
     case "LoginAttempt":
-      db_res = await axios.post("http://localhost:4000/events", req.body).catch((err) => {
+      db_res = await axios.post("http://localhost:8000/events", req.body).catch((err) => {
         console.log(err.message);
       });
       break;
     case "Register":
-      db_res = await axios.post("http://localhost:4000/events", req.body).catch((err) => {
+      db_res = await axios.post("http://localhost:8000/events", req.body).catch((err) => {
         console.log(err.message);
       });
       break;
     case "returnToLogin":
-      db_res = await axios.post("http://localhost:4001/events", req.body).catch((err) => {
+      db_res = await axios.post("http://localhost:3001/events", req.body).catch((err) => {
         console.log(err.message);
-        console.log("bug");
       });
       break;
     case "Login":
-      db_res = await axios.post("http://localhost:4001/events", req.body).catch((err) => {
+      db_res = await axios.post("http://localhost:3001/events", req.body).catch((err) => {
         console.log(err.message);
       });
       break;

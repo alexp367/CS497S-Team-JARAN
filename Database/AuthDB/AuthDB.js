@@ -11,13 +11,14 @@ let db, collection;
 
 app.post("/events", async (req, res) => {
     const { event, data } = req.body;
-    collection = db.collection("Users");
-
+    
     if (event === "Register") {
+        collection = db.collection("Users");
+        let value = await collection.count();
         const account = {
             username: data.username,
             password: data.password,
-            id: null,
+            id: value + 1,
             firstName: null,
             gender: null,
             genderPreference: null,
@@ -35,8 +36,7 @@ app.post("/events", async (req, res) => {
             console.log(err);
         }
         
-
-        if(val[0].username != account.username){
+        if(!val[0]){
             collection.insertOne(account, (err) => {
                 if(err) {
                     res.send("Error registering account");
