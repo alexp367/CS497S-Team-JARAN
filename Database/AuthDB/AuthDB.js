@@ -11,12 +11,23 @@ let db, collection;
 
 app.post("/events", async (req, res) => {
     const { event, data } = req.body;
-    collection = db.collection("Users");
-
+    
     if (event === "Register") {
+        collection = db.collection("Users");
+        let value = await collection.count();
         const account = {
             username: data.username,
-            password: data.password
+            password: data.password,
+            id: value + 1,
+            firstName: null,
+            gender: null,
+            genderPreference: null,
+            age: null,
+            ageGapPreference: null,
+            description: null,
+            interests: null,
+            swipedRight: null,
+            matches: null
         };
         let val;
         try{
@@ -25,8 +36,7 @@ app.post("/events", async (req, res) => {
             console.log(err);
         }
         
-
-        if(val[0].username != account.username){
+        if(!val[0]){
             collection.insertOne(account, (err) => {
                 if(err) {
                     res.send("Error registering account");
@@ -73,7 +83,7 @@ app.post("/events", async (req, res) => {
 
 client.connect(err => {
     if(!err) {
-        const port = process.env.PORT || 4000;
+        const port = process.env.PORT || 8000;
         app.listen(port);
         db = client.db("AuthDB");
     }
