@@ -26,7 +26,7 @@
 ### Each microservice can be found in its own respective directory. Learn more about them in their own README.
 
 ## Design Overview
-![Alt](/FrontEnd/public/System_Design.png)
+![Design Overview](/FrontEnd/public/System_Design.png "Design Overview")
 
 ## Software Used
 * **FrontEnd** - HTML/EJS and CSS. App is rendered using ReactJS
