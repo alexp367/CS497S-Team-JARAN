@@ -16,7 +16,7 @@ COPY ./index.js ./index.js
 COPY ./public ./public
 
 # our app is running on port 5000 within the container, so need to expose it
-EXPOSE 5000
+EXPOSE 3003
 
 # the command that starts our app
 CMD ["npm", "start"]

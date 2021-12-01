@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
-const port = process.env.PORT || 4001
+const port = process.env.PORT || 3001
 app.use(express.json());
 const axios = require('axios');
 const path = require('path');
