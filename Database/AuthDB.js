@@ -10,22 +10,34 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 let db, collection;
 
 app.post("/events", async (req, res) => {
-    const { type, data } = req.body;
+    const { event, data } = req.body;
     collection = db.collection("Users");
-    
-    if (type === "Register") {
+
+    if (event === "Register") {
         const account = {
             username: data.username,
             password: data.password
         };
-        const val = collection.find_one({ "username": data.username });
-        if(val){
-            collection.insertOne(account);
-            console.log("Succesfully registered your account");
+        let val;
+        try{
+            val = await collection.find({ "username": data.username }).toArray();
+        } catch(err){
+            console.log(err);
+        }
+        
+
+        if(val[0].username != account.username){
+            collection.insertOne(account, (err) => {
+                if(err) {
+                    res.send("Error registering account");
+                }
+            });
 
             await axios.post("http://localhost:5000/events", {
-                type: "returnToLogin",
-                data: val,
+                "event": "returnToLogin",
+                data: account,
+            }).catch((err) => {
+                console.log(err.message);
             });
         }
         else{
@@ -33,13 +45,21 @@ app.post("/events", async (req, res) => {
         }
     }
 
-    if (type === "LoginAttempt") {
-        const val = collection.find_one({ "username": data.username });
-        if(val){
+    if (event === "LoginAttempt") {
+        let val;
+        try{
+            val = await collection.find({ "username": data.username }).toArray();
+        } catch(err){
+            console.log(err);
+        }
+   
+        if(val[0].password == data.password){
             console.log("Succesfully logged into your account");
             await axios.post("http://localhost:5000/events", {
-                type: "Login",
-                data: val,
+                "event": "Login",
+                data: data,
+            }).catch((err) => {
+                console.log(err.message);
             });
         }
         else{
