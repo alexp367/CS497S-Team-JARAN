@@ -9,14 +9,14 @@ const path = require('path');
 app.post('/events', async (req, res) => {
     const username = req.body['username'];
     const password = req.body['password'];  
-    const { type, data } = req.body;
+    const { event, data } = req.body;
 
-    if(type == 'returnToLogin'){
-        res.redirect('/FrontEnd/valen/src/components/Login/Login');
+    if(event == 'returnToLogin'){
+        res.redirect('../FrontEnd/src/components/Login/Login'); 
     }
 
-    if(type == 'Login'){
-        res.redirect('/FrontEnd/valen/src/components/Profile/Profile');
+    if(event == 'Login'){
+        res.redirect('../FrontEnd/src/components/profile/Profile'); 
     }
 
 });

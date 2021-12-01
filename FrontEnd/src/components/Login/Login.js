@@ -9,10 +9,13 @@ class Login extends Component {
             username: document.getElementById("username").value,
             password: document.getElementById("password").value
         }
-        await axios.post("http://localhost:5000/events", {
-            type: "LoginAttempt",
+        const response = await axios.post("http://localhost:5000/events", {
+            "event": "LoginAttempt",
             data: info,
+        }).catch((err) => {
+            console.log(err.message);
         });
+        console.log(response);
     }
     
     render() {
@@ -29,7 +32,7 @@ class Login extends Component {
                         <input type="password" name="password" id="password" class = "ainput" required>
                         </input>
 
-                        <button type="submit" onClick={this.Authentication}>Login</button>
+                        <button type="submit" onClick={this.Authenticate}>Login</button>
 
                         <a href="register">
                             <p>Need to register an account?</p>

@@ -4,14 +4,15 @@ import axios from 'axios';
 
 class Register extends Component {    
     async Registration(){
-        console.log("test");
         const info = {
             username: document.getElementById("username").value,
             password: document.getElementById("password").value
         }
         await axios.post("http://localhost:5000/events", {
-            type: "Register",
+            "event": "Register",
             data: info,
+        }).catch((err) => {
+            console.log(err.message);
         });
     }
     
