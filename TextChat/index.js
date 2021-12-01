@@ -15,7 +15,7 @@ const path = require('path')
 //const webSocket = new WebSocket(url, protocols);
 
 app.use(express.static(path.join(__dirname + '/public')))
-app.use(express.static(path.join(__dirname + '/node_modules')))
+app.use(express.static(path.join(__dirname + '/node_modules/socket.io/client-dist')))
 
 io.on('connection', socket => {
     //console.log('Some client connected')
