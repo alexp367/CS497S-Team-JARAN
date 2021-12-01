@@ -16,7 +16,17 @@ app.post("/events", async (req, res) => {
     if (event === "Register") {
         const account = {
             username: data.username,
-            password: data.password
+            password: data.password,
+            id: null,
+            firstName: null,
+            gender: null,
+            genderPreference: null,
+            age: null,
+            ageGapPreference: null,
+            description: null,
+            interests: null,
+            swipedRight: null,
+            matches: null
         };
         let val;
         try{
@@ -73,7 +83,7 @@ app.post("/events", async (req, res) => {
 
 client.connect(err => {
     if(!err) {
-        const port = process.env.PORT || 4000;
+        const port = process.env.PORT || 8000;
         app.listen(port);
         db = client.db("AuthDB");
     }
