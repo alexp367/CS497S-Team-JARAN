@@ -9,7 +9,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 let db, collection;
 
 app.post("/save", (req, res) => {
-    db.collection("Profiles").insertOne(req.body.profile, (err) => {
+    db.collection("Profiles").insertOne(req.body, (err) => {
         if(err) {
             res.send("Error saving profile");
         }
@@ -24,7 +24,7 @@ app.post("/get", async (req, res) => {
 
 client.connect(err => {
     if(!err) {
-        const port = process.env.PORT || 8000;
+        const port = process.env.PORT || 8001;
         app.listen(port, () => {
             console.log("Listening on " + port);
         });
