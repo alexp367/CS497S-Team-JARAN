@@ -11,6 +11,9 @@ import IconButton from "@material-ui/core/IconButton";
 import "./SwipeButtons.css";
 
 function ValenCards() {
+
+  let right_swiped = [];
+
   const [people, setPeople] = useState([]);
 
   // Runs based on a condition
@@ -48,10 +51,14 @@ function ValenCards() {
   const canSwipe = currentIndex >= 0;
 
   // set last direction and decrease current index
-  const swiped = (direction, nameToDelete, index) => {
-    console.log("Swiped " + direction + " on " + nameToDelete);
+  const swiped = (direction, nameToAdd, index) => {
+    console.log("Swiped " + direction + " on " + nameToAdd);
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
+    if(direction === 'right'){
+      right_swiped.push(nameToAdd);
+    }
+    console.log(right_swiped);
   };
 
   const outOfFrame = (name, idx) => {
@@ -123,3 +130,4 @@ function ValenCards() {
 }
 
 export default ValenCards;
+
