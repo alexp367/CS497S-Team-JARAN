@@ -28,7 +28,6 @@
 ## Design Overview
 [Click Here for Diagram](https://imgur.com/a/A7SsSEl)
 
-
 ## Software Used
 * **FrontEnd** - HTML/EJS and CSS. App is rendered using ReactJS
 * **BackEnd** - NodeJS
