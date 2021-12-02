@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from "react";
-import Navbar from "../../Swiping/src/Navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 import Profile from "./components/profile/Profile";
