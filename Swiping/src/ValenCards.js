@@ -58,6 +58,7 @@ function ValenCards() {
     if(direction === 'right'){
       right_swiped.push(nameToAdd);
     }
+    window.sessionStorage.setItem("right_swiped",right_swiped);
     console.log(right_swiped);
   };
 

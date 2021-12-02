@@ -7,7 +7,7 @@ export const MenuItems = [
     },
     {
         title: 'Find Matches!',
-        url: '/',
+        url: '/FindMatches',
         cName: 'nav-links'
     },    
     {

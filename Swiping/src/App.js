@@ -13,9 +13,9 @@ function App() {
       <Navbar/>
       <Router>
         <Routes>
-          <Route path="/chat" element={<h1>Chat Page</h1>} />
+          <Route path="/ViewMatches" element={window.sessionStorage.getItem('right_swiped')} />
           <Route
-            path="/"
+            path="/FindMatches"
             element={
               <React.Fragment>
                 <ValenCards />
