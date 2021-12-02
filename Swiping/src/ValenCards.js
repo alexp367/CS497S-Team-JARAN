@@ -3,6 +3,13 @@ import ValenCard from "react-tinder-card";
 import database from "./firebase";
 import "./ValenCards.css";
 
+import ReplayIcon from "@material-ui/icons/Replay";
+import CloseIcon from "@material-ui/icons/Close";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import IconButton from "@material-ui/core/IconButton";
+// import ValenCards from "./ValenCards";
+import "./SwipeButtons.css";
+
 function ValenCards() {
   const [people, setPeople] = useState([]);
 
@@ -15,7 +22,6 @@ function ValenCards() {
         setPeople(snapshot.docs.map((doc) => doc.data()))
       );
   }, []);
-
 
   const [currentIndex, setCurrentIndex] = useState(
     database.collection("people").length - 1
@@ -43,6 +49,7 @@ function ValenCards() {
 
   // set last direction and decrease current index
   const swiped = (direction, nameToDelete, index) => {
+    console.log("Swiped " + direction + " on " + nameToDelete);
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
   };
@@ -70,18 +77,17 @@ function ValenCards() {
     await childRefs[newIndex].current.restoreCard();
   };
 
-
-
   return (
     <div>
       <div className="valenCards__cardContainer">
         {people.map((person, index) => (
           <ValenCard
+            ref={childRefs[index]}
             className="swipe"
             key={person.name}
             preventSwipe={["up", "down"]}
             onSwipe={(dir) => swiped(dir, person.name, index)}
-            onCardLeftScreen={() => outOfFrame(person.name, index)}
+            // onCardLeftScreen={() => outOfFrame(person.name, index)}
           >
             <div
               style={{ backgroundImage: `url(${person.url})` }}
@@ -91,6 +97,26 @@ function ValenCards() {
             </div>
           </ValenCard>
         ))}
+      </div>
+      <div className="swipeButtons">
+        <IconButton
+          className="swipeButtons__left"
+          onClick={() => swipe('left')}
+        >
+          <CloseIcon fontSize="large" />
+        </IconButton>
+        <IconButton
+          className="swipeButtons__repeat"
+          onClick={() => goBack()}
+        >
+          <ReplayIcon fontSize="large" />
+        </IconButton>
+        <IconButton
+          className="swipeButtons__right"
+          onClick={() => swipe('right')}
+        >
+          <FavoriteIcon fontSize="large" />
+        </IconButton>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@ function App() {
             element={
               <React.Fragment>
                 <ValenCards />
-                <SwipeButtons />
+                {/* <SwipeButtons /> */}
               </React.Fragment>
             }
           />
