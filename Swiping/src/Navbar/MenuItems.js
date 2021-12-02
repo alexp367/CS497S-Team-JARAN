@@ -7,7 +7,7 @@ export const MenuItems = [
     },
     {
         title: 'Find Matches!',
-        url: '/FindMatches',
+        url: '/',
         cName: 'nav-links'
     },    
     {
@@ -18,11 +18,6 @@ export const MenuItems = [
     {
         title: 'Profile Preview',
         url: '/ProfilePreview',
-        cName: 'nav-links'
-    },
-    {
-        title: 'Create Dummy Accounts',
-        url: '#',
         cName: 'nav-links'
     }
 ]
