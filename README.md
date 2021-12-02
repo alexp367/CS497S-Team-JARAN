@@ -26,7 +26,7 @@
 ### Each microservice can be found in its own respective directory. Learn more about them in their own README.
 
 ## Design Overview
-![Design Overview](FrontEnd\public\System_Design.PNG)
+![Design Overview](/FrontEnd/public/System_Design.png)
 
 
 ## Software Used
