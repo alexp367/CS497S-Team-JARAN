@@ -28,7 +28,6 @@
 ## Design Overview
 ![Design Overview](/FrontEnd/public/System_Design.jpg)
 
-
 ## Software Used
 * **FrontEnd** - HTML/EJS and CSS. App is rendered using ReactJS
 * **BackEnd** - NodeJS
