@@ -23,12 +23,6 @@ function App() {
             }
           />
         </Routes>
-
-        {/* Tinder Cards */}
-        {/* Buttons below tinder cards */}
-
-        {/* Chats screen */}
-        {/* Individual chat screen */}
       </Router>
     </div>
   );
