@@ -6,10 +6,10 @@ app.use(express.json());
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://ahickey:MySuperSecretPassword@profiles.wmtxl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-let db, collection;
+let db;
 
-app.post("/save", (req, res) => {
-    db.collection("Profiles").insertOne(req.body, (err) => {
+app.post("/save", async (req, res) => {
+    await db.collection("Profiles").insertOne(req.body.profile, (err) => {
         if(err) {
             res.send("Error saving profile");
         }

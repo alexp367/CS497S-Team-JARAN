@@ -18,7 +18,7 @@ app.post('/events', async (req, res) => {
     if(event == 'Login'){
         //res.redirect('../FrontEnd/src/components/profile/Profile'); 
     }
-
+    res.send({});
 });
 
 server.listen(port, () => {
