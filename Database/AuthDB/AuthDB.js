@@ -11,23 +11,26 @@ let db, collection;
 
 app.post("/events", async (req, res) => {
     const { event, data } = req.body;
+    collection = db.collection("Users");
     
     if (event === "Register") {
-        collection = db.collection("Users");
-        let value = await collection.count();
+        const id = await collection.count()+1;
         const account = {
             username: data.username,
             password: data.password,
-            id: value + 1,
-            firstName: null,
-            gender: null,
-            genderPreference: null,
-            age: null,
-            ageGapPreference: null,
-            description: null,
-            interests: null,
-            swipedRight: null,
-            matches: null
+            userId: id
+        }
+        const profile = {
+            userId: id,
+            firstName: data.username,
+            gender: "Male",
+            genderPreference: "Male",
+            age: 18,
+            ageGapPreference: 0,
+            description: "",
+            interests: [],
+            swipedRight: [],
+            matches: []
         };
         let val;
         try{
@@ -36,13 +39,18 @@ app.post("/events", async (req, res) => {
             console.log(err);
         }
         
-        if(!val[0]){
+        if(val.length === 0){
             collection.insertOne(account, (err) => {
                 if(err) {
                     res.send("Error registering account");
                 }
             });
-
+            await axios.post("http://localhost:5000/events", {
+                "event": "saveProfile",
+                profile: profile,
+            }).catch((err) => {
+                console.log(err.message);
+            });
             await axios.post("http://localhost:5000/events", {
                 "event": "returnToLogin",
                 data: account,
@@ -51,8 +59,9 @@ app.post("/events", async (req, res) => {
             });
         }
         else{
-            console.log("Username already in use");
+            res.send("Username already in use");
         }
+        res.send({});
     }
 
     if (event === "LoginAttempt") {
@@ -62,23 +71,24 @@ app.post("/events", async (req, res) => {
         } catch(err){
             console.log(err);
         }
-   
-        if(val[0].password == data.password){
+
+        if(val.length === 0){
+            res.send("Username not found");
+        }
+        else if(val[0].password !== data.password){
+            res.send("Password not correct");
+        }
+        else{
             console.log("Succesfully logged into your account");
             await axios.post("http://localhost:5000/events", {
                 "event": "Login",
-                data: data,
+                "data": val[0],
             }).catch((err) => {
                 console.log(err.message);
             });
+            res.send(JSON.stringify({"userId": val[0].userId}));
         }
-        else{
-            console.log("Username not found");
-        }
-    
     }
-
-    res.send({});
 });
 
 client.connect(err => {

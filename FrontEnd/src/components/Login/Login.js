@@ -15,6 +15,7 @@ class Login extends Component {
         }).catch((err) => {
             console.log(err.message);
         });
+        window.sessionStorage.setItem("userId",response.data.userId);
     }
     
     render() {
