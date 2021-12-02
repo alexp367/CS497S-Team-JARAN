@@ -2,31 +2,61 @@ import React, { Component } from 'react';
 import './AboutMe.css';
 const axios = require("axios");
 
-const interests = [];
+let interests = [];
+
+async function getProfile(){
+    console.log(window.sessionStorage.getItem("userId"));
+    const res = await axios.post("http://localhost:5000/events", {
+        "event": "getProfile",
+        "userId": window.sessionStorage.getItem("userId")
+      }).catch((err) => {
+        console.log(err);
+      });
+    document.getElementById("myGender").value = res.data.gender;
+    document.getElementById("preferredGender").value = res.data.genderPreference;
+    document.getElementById("description").value = res.data.description;
+    document.getElementById("myAge").value = res.data.age;
+    document.getElementById("preferredAge").value = res.data.ageGapPreference;
+    for(let i = 0;i < res.data.interests.length;i++){
+        document.getElementById(res.data.interests[i]).checked = true;
+        if(interests.indexOf(res.data.interests[i]) === -1){
+            interests.push(res.data.interests[i]);
+        }
+    }
+    interests.sort();
+}
 
 class AboutMe extends Component {
     async saveProfile() {
-        const profile = {"myGender": document.getElementById("myGender").value,
-                     "preferredGender": document.getElementById("preferredGender").value,
-                     "myAge": document.getElementById("myAge").value,
-                     "preferredAge": document.getElementById("preferredAge").value,
+        console.log(window.sessionStorage.getItem("userId"));
+        const profile = {"userId": window.sessionStorage.getItem("userId"),
+                    "gender": document.getElementById("myGender").value,
+                     "genderPreference": document.getElementById("preferredGender").value,
+                     "age": document.getElementById("myAge").value,
+                     "ageGapPreference": document.getElementById("preferredAge").value,
                      "interests": interests,
                      "description": document.getElementById("description").value,
                     };
         const eb_res = await axios.post("http://localhost:5000/events", {
-            "event": "saveProfile",
+            "event": "updateProfile",
             "profile": profile
         }).catch((err) => {
             console.log(err.message);
         });
     }
 
-    addInterest() {
-        interests.push(document.getElementById("interests").value);
+    updateInterests() {
+        interests = [];
+        for(let i = 0;i < document.getElementById("interests").children.length;i += 3){
+            if(document.getElementById("interests").children[i].checked){
+                interests.push(document.getElementById("interests").children[i].value);
+            }
+        }
+        interests.sort();
     }
 
     render() {
-        return (
+        const object = (
             <div>
                 <div>
                     <div>
@@ -52,15 +82,25 @@ class AboutMe extends Component {
                             <label for="preferredAge"> looking for someone within </label>
                             <input type="number" id="preferredAge" name="preferredAge" min="0"></input> years of my age
                             <br></br>
-                            <label for="interests">Interests </label>
-                            <select name="interests" id="interests" onChange={this.addInterest}>
-                                <option value="Basketball">Basketball</option>
-                                <option value="Football">Football</option>
-                                <option value="Baseball">Baseball</option>
-                                <option value="Hockey">Hockey</option>
-                                <option value="Soccer">Soccer</option>
-                            </select>
+                            <label>Interests </label>
                             <br></br>
+                            <div id="interests">
+                                <input type="checkbox" id="Basketball" value="Basketball" onChange={this.updateInterests}></input>
+                                <label>  Basketball</label>
+                                <br></br>
+                                <input type="checkbox" id="Football" value="Football" onChange={this.updateInterests}></input>
+                                <label>  Football</label>
+                                <br></br>
+                                <input type="checkbox" id="Baseball" value="Baseball" onChange={this.updateInterests}></input>
+                                <label>  Baseball</label>
+                                <br></br>
+                                <input type="checkbox" id="Hockey" value="Hockey" onChange={this.updateInterests}></input>
+                                <label>  Hockey</label>
+                                <br></br>
+                                <input type="checkbox" id="Soccer" value="Soccer" onChange={this.updateInterests}></input>
+                                <label>  Soccer</label>
+                                <br></br>
+                            </div>
                             <br></br> 
 
 
@@ -71,6 +111,8 @@ class AboutMe extends Component {
                 </div>
             </div>
         );
+        getProfile();
+        return object;
     }
 }
 
