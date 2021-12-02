@@ -1,5 +1,5 @@
 # pull the Node Docker image
-FROM node:alpine
+FROM node
 
 # Create the directory inside the container for the app
 WORKDIR /usr/src/app
@@ -15,8 +15,8 @@ RUN npm install
 COPY ./index.js ./index.js
 COPY ./public ./public
 
-# our app is running on port 5000 within the container, so need to expose it
-EXPOSE 5000
+# our app is running on port 3003 within the container, so need to expose it
+EXPOSE 3003
 
 # the command that starts our app
 CMD ["npm", "start"]
