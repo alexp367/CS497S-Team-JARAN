@@ -3,7 +3,7 @@
 ## Information
 **Developer** - Jason Canterbury\
 **Purpose** - Highlights common interests between matched users and recommends dates and conversation topics.\
-**Run Instructions** - `npm start` within the directory. Note that this microservice gets run by following the run instructions within the root directory; these instructions are for if you want to run this microservice individually.
+**Run Instructions** - `npm start` within the directory. Note that this microservice gets run by following the run instructions within the root directory; these instructions are for if you want to run this microservice individually.\
 **Techologies Used** - This microservice uses Node.js and Express.
 
 ## API Endpoints:
