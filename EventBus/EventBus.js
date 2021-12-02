@@ -22,6 +22,11 @@ app.post("/events", async (req, res) => {
         console.log(err.message);
       });
       break;
+    case "updateProfile":
+        db_res = await axios.post("http://localhost:8001/update", req.body).catch((err) => {
+          console.log(err.message);
+        });
+        break;
     case "getCommonInterests":
       db_res = await axios.post("http://localhost:3002/getCommonInterests", req.body).catch((err) => {
         console.log(err.message);
