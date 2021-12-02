@@ -4,12 +4,13 @@ import ValenCards from "./ValenCards";
 import SwipeButtons from "./SwipeButtons";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
+import Navbar from "./Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
       {/* Header */}
-      <Header />
+      <Navbar/>
       <Router>
         <Routes>
           <Route path="/chat" element={<h1>Chat Page</h1>} />

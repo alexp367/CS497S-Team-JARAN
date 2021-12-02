@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MenuItems } from './MenuItems';
-import logoicon from '../../valenicon.png';
+import logoicon from '../valenicon.png';
 import './Navbar.css';
 
 class Navbar extends Component{
