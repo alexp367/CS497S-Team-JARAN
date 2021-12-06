@@ -1,3 +1,4 @@
 FROM nginx
-COPY default.conf /etc/nginx/conf.d/default.conf
+WORKDIR /usr/src/app
+COPY ./conf.d/default.conf /etc/nginx/conf.d/default.conf
 # COPY swipe.conf /etc/nginx/conf.d

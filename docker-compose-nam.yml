@@ -1,0 +1,128 @@
+version: "3.9"
+services:
+  frontend:
+    image: frontend_image
+    container_name: frontend
+    restart: unless-stopped
+    expose:
+      - "3000"
+    build:
+      context: ./FrontEnd
+    # ports: 
+    #   - 3000:3000
+    environment:
+      - MESSAGE="Building FrontEnd"
+
+######################################
+  # authdatabase:
+  #   image: authdatabase_image
+  #   container_name: authdatabase
+  #   restart: unless-stopped
+  #   expose:
+  #     - "8000"
+  #   build:
+  #     context: ./Database/AuthDB
+  #   # ports: 
+  #   #   - 8000:8000
+  #   environment:
+  #     - MESSAGE="Building AuthDB"
+
+  # profiledatabase:
+  #   image: profiledatabase_image
+  #   container_name: profiledatabase
+  #   restart: unless-stopped
+  #   expose:
+  #     - "8080"
+  #   build:
+  #     context: ./Database/ProfileDB
+  #   # ports: 
+  #   #   - 8001:8001
+  #   environment:
+  #     - MESSAGE="Building ProfileDB"
+
+########################
+  # auth:
+  #   image: auth_image
+  #   container_name: auth
+  #   restart: unless-stopped
+  #   expose:
+  #       - "3001"
+  #   build:
+  #     context: ./Authentication
+  #   # ports:
+  #   #   - "3001:3001"
+  #   environment:
+  #     - MESSAGE="Building Authentication"
+
+  # daterecommender:
+  #   image: daterecommender_image
+  #   container_name: daterecommender
+  #   restart: unless-stopped
+  #   expose:
+  #     - "3002"
+  #   build:
+  #     context: ./DateRecommender
+  #   # ports:
+  #   #   - "3002:3002"
+  #   environment:
+  #     - MESSAGE="Building DateRecommender"
+
+  textchat:
+    image: textchat_image
+    container_name: textchat
+    restart: unless-stopped
+    expose:
+      - "3003"
+    build:
+      context: ./TextChat
+    # ports:
+    #   - "3003:3003"
+    environment:
+      - MESSAGE="Building TextChat"
+
+  # swipe:
+  #   image: swipe_image
+  #   container_name: swipe
+  #   restart: unless-stopped
+  #   expose:
+  #     - "3004"
+  #   build:
+  #     context: ./Swiping
+  #   # ports:
+  #   #   - "3004:3004"
+  #   environment:
+  #     - MESSAGE="Building Swiping"
+
+  # eventbus:
+  #   image: eventbus_image
+  #   container_name: eventbus
+  #   restart: unless-stopped
+  #   expose:
+  #     - "5000"
+  #   build:
+  #     context: ./EventBus
+  #   # ports: 
+  #   #   - 5000:5000
+  #   environment:
+  #     - MESSAGE="Building EventBus"
+
+  nginx:
+    image: nginximage
+    container_name: nginx
+    restart: unless-stopped
+    expose:
+        - "8080"
+    build:
+      context: ./APIGateWay
+    ports:
+      - "8080:80"
+    volumes:
+      - ./APIGateWay/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - frontend
+      # - auth
+      # - daterecommender
+      - textchat
+      # - swipe
+      # - eventbus
+      
