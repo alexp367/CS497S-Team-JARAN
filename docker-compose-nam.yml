@@ -10,6 +10,7 @@ services:
       context: ./FrontEnd
     volumes:
       - ./FrontEnd/public:/usr/src/app/public
+      - ./FrontEnd/src:/usr/src/app/src
     # ports: 
     #   - 3000:3000
     environment:
@@ -88,18 +89,20 @@ services:
     environment:
       - MESSAGE="Building TextChat"
 
-  # swipe:
-  #   image: swipe_image
-  #   container_name: swipe
-  #   restart: unless-stopped
-  #   expose:
-  #     - "3004"
-  #   build:
-  #     context: ./Swiping
-  #   # ports:
-  #   #   - "3004:3004"
-  #   environment:
-  #     - MESSAGE="Building Swiping"
+  swipe:
+    image: swipe_image
+    container_name: swipe
+    restart: unless-stopped
+    expose:
+      - "3004"
+    build:
+      context: ./Swiping
+    volumes:
+    - ./Swiping/public:/usr/src/app/public
+    # ports:
+    #   - "3004:3004"
+    environment:
+      - MESSAGE="Building Swiping"
 
   # eventbus:
   #   image: eventbus_image
@@ -131,6 +134,6 @@ services:
       # - auth
       # - daterecommender
       - textchat
-      # - swipe
+      - swipe
       # - eventbus
       
