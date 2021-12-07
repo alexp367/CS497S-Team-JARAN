@@ -1,5 +1,3 @@
-// Websocket
-//import WebSocket, { WebSocketServer } from 'ws';
 
 const express = require('express')
 const app = express()
@@ -9,18 +7,27 @@ const io = require('socket.io')(server)
 const path = require('path')
 
 
+app.use(express.static('public'));
+app.use(express.static('node_modules'));
 
-//const webSocket = new WebSocket(url, protocols);
+// app.use(express.static(path.join(__dirname + '/public')));
+// app.use(express.static(path.join(__dirname, '/node_modules')));
 
-app.use(express.static(path.join(__dirname + '/public')))
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', '/index.html'));
+// })
 
 io.on('connection', socket => {
-    //console.log('Some client connected')
+    console.log('Some client connected')
 
     socket.on('chat', message => {
-        //console.log('From client: ', message)
+        console.log('From client: ', message)
         io.emit('chat', message)
       })
+})
+
+io.on('disconnection', socket =>{
+  console.log('Someone disconnected')
 })
 
 

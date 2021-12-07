@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Text Chat Service",
   "main": "index.js",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
@@ -23,6 +24,6 @@
     "socket.io": "^4.3.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.15"
   }
 }

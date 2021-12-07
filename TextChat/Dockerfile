@@ -19,4 +19,5 @@ COPY ./public ./public
 EXPOSE 3003
 
 # the command that starts our app
-CMD ["npm", "start"]
+# CMD ["npm", "start"]
+CMD ["npm", "run", "start_dev" ]
