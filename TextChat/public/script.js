@@ -1,4 +1,9 @@
-const socket = io()
+// import io from "socket.io-client";
+const socket = io({
+  transports: ["polling"],
+  withCredentials: true,
+  allowEIO3: true
+})
 
 const chat = document.querySelector('.chat-form')
 const Input = document.querySelector('.chat-input')

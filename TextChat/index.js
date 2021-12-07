@@ -3,7 +3,15 @@ const express = require('express')
 const app = express()
 const server = require('http').createServer(app)
 const port = process.env.PORT || 3003
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, {
+  // transports: [ "websocket" ] // or [ "websocket", "polling" ] (the order matters)
+  // transports:  [ "websocket", "polling" ]
+  cors: {
+    origin: "http://textchat:3003",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+})
 const path = require('path')
 
 
