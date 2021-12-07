@@ -8,6 +8,8 @@ services:
       - "3000"
     build:
       context: ./FrontEnd
+    volumes:
+      - ./FrontEnd/public:/usr/src/app/public
     # ports: 
     #   - 3000:3000
     environment:
@@ -75,6 +77,12 @@ services:
       - "3003"
     build:
       context: ./TextChat
+    volumes:
+      - ./TextChat/public:/usr/src/app/public
+      - ./TextChat/index.js:/usr/src/app/index.js
+      # - type: bind
+      #   source: ./TextChat/index.js
+      #   target: /index.js
     # ports:
     #   - "3003:3003"
     environment:

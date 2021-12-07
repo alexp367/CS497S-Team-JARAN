@@ -19,15 +19,15 @@ app.use(express.static('node_modules'));
 
 io.on('connection', socket => {
     console.log('Some client connected')
-
+    
+    socket.on('disconnect', socket =>{
+      console.log('Someone disconnected')
+      io.emit('chat', 'someone disconnected')
+    })
     socket.on('chat', message => {
         console.log('From client: ', message)
         io.emit('chat', message)
       })
-})
-
-io.on('disconnection', socket =>{
-  console.log('Someone disconnected')
 })
 
 
